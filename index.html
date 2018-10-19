@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- include our dependency on angular -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+    <script src="spookers.js"></script>
+    <script src="script.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <meta charset="utf-8">
+    <title>Spooky Spookers</title>
+</head>
+<body>
+  <div ng-app='app' ng-controller='mainCtrl'>
+    <h1>Spooky Spookers</h1>
+    
+    <div id="versus">
+      <div class="selection-left" title="Click to remove">
+        <div class = "spooker" ng-click="selected_left=null">
+          <h3>{{selected_left.name}}</h3>
+          <p>{{selected_left.tagline}}</p>
+          <img ng-src="{{getImageSrc(selected_left)}}" alt="Spooker one">
+        </div>
+      </div>
+      
+      <div class="selection-right" ng-click="selected_right=null" title="Click to remove">
+        <div class = "spooker">
+          <h3>{{selected_right.name}}</h3>
+          <p>{{selected_right.tagline}}</p>
+          <img ng-src="{{getImageSrc(selected_right)}}" alt="Spooker two">
+        </div>
+      </div>
+      
+      <p style="position:absolute;left:50%;top:25%">vs</p>
+      <p style="position:relative;top:80%">{{getWinner()}}<p>
+    </div>
+    
+    <ul class='spookers-list'>
+      <li ng-repeat='spooker in spookers' ng-click="select(spooker)">
+        <div class = "spooker">
+          <h3>{{spooker.name}}</h3>
+          <img ng-src="{{spooker.imgsrc}}" alt="cool">
+        </div>
+      </li>
+    </ul>
+  
+    
+  </div>
+</body>
+</html>
